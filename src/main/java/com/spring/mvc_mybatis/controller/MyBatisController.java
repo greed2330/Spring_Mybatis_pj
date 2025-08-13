@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.spring.mvc_mybatis.ch01.service.UserServiceImpl_ch01;
 import com.spring.mvc_mybatis.ch02.service.UserServiceImpl_ch02;
 import com.spring.mvc_mybatis.ch03.service.UserService_ch03;
+import com.spring.mvc_mybatis.ch04.service.UserService_ch04;
+import com.spring.mvc_mybatis.ch05.service.UserService_ch05;
+import com.spring.mvc_mybatis.ch06.service.UserService_ch06;
 
 @Controller
 public class MyBatisController {
@@ -30,6 +33,14 @@ public class MyBatisController {
 	@Autowired
 	private UserService_ch03 service3;
 	
+	@Autowired
+	private UserService_ch04 service4;
+	
+	@Autowired
+	private UserService_ch05 service5;
+	
+	@Autowired
+	private UserService_ch06 service6;
 	
 	//ch01 -------------------
 	//ch01 user:address => 1:1 => assocation
@@ -125,5 +136,141 @@ public class MyBatisController {
 		service3.getUserSearchInfo(request, response, model);
 		
 		return "search/getUserSearchInfo";
+	}
+	
+	// ch04 ---------------------------------------------
+	// ch04. 배열, List
+	// 1.collection="멤버변수"인 경우
+	@RequestMapping("/getUserSearchInfo1")
+	public String getUserSearchInfo1(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException{
+		logger.info("url => /getUserSearchInfo1");
+		service4.getUserInfo1(request, response, model);
+		
+		return "array/array1";
+	}
+	
+	// 2.collection="array"인 경우
+	@RequestMapping("/getUserSearchInfo2")
+	public String getUserSearchInfo2(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException{
+		logger.info("url => /getUserSearchInfo2");
+		
+		service4.getUserInfo2(request, response, model);
+		
+		return "array/array2";
+	}
+	
+	// 2.collection="list"인 경우
+	@RequestMapping("/getUserSearchInfo3")
+	public String getUserSearchInfo3(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException{
+		logger.info("url => /getUserSearchInfo3");
+		
+		service4.getUserInfo3(request, response, model);
+		
+		return "array/array3";
+	}
+	
+	// ch05 ---------------------------------------------
+	@RequestMapping("/getUserList")
+	public String getUserList(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException{
+		logger.info("url => /getUserList");
+		
+		service5.getUserList(request, response, model);
+		
+		return "user/getUserList";
+	}
+	
+	@RequestMapping("/getUser")
+	public String getUser(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException{
+		logger.info("url => /getUserList");
+		
+		service5.getUser(request, response, model);
+		
+		return "user/getUserList2";
+	}
+	
+	@RequestMapping("/insertUserList")
+	public String insertUserList(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException{
+		logger.info("url => /insertUserList");
+		
+		service5.insertUserList(request, response, model);
+		
+		return "user/getUserList3";
+	}
+	
+	@RequestMapping("/updateUserList")
+	public String updateUserList(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException{
+		logger.info("url => /updateUserList");
+		
+		service5.updateUserList(request, response, model);
+		
+		return "user/getUserList3";
+	}
+	
+	@RequestMapping("/deleteUserList")
+	public String deleteUserList(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException{
+		logger.info("url => /updateUserList");
+		
+		service5.deleteUserList(request, response, model);
+		
+		return "user/getUserList3";
+	}
+			
+	//ch06---------------------------------------
+	@RequestMapping("/ch06_getUserList")
+	public String ch06_getUserList(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException{
+		logger.info("url => /getUserList");
+		
+		service6.getUserList(request, response, model);
+		
+		return "user/getUserList";
+	}
+	
+	@RequestMapping("/ch06_getUser")
+	public String ch06_getUser(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException{
+		logger.info("url => /getUserList");
+		
+		service6.getUser(request, response, model);
+		
+		return "user/getUserList2";
+	}
+	
+	@RequestMapping("/ch06_insertUserList")
+	public String ch06_insertUserList(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException{
+		logger.info("url => /insertUserList");
+		
+		service6.insertUserList(request, response, model);
+		
+		return "user/getUserList3";
+	}
+	
+	@RequestMapping("/ch06_updateUserList")
+	public String ch06_updateUserList(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException{
+		logger.info("url => /updateUserList");
+		
+		service6.updateUserList(request, response, model);
+		
+		return "user/getUserList3";
+	}
+	
+	@RequestMapping("/ch06_deleteUserList")
+	public String ch06_deleteUserList(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException{
+		logger.info("url => /updateUserList");
+		
+		service6.deleteUserList(request, response, model);
+		
+		return "user/getUserList3";
 	}
 }
